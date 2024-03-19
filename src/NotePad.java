@@ -35,10 +35,11 @@ public class NotePad implements ActionListener {
     //---------------------------------------------Menu-Item-For-Edit-------------------------------//
     JMenuItem iUndo,iRedo;
 
-    private Funciton_File file=new Funciton_File(this);
-    private Function_Format funtionFormat=new Function_Format(this);
-    private Function_Color functionColor=new Function_Color(this);
-    private Function_Edit functionEdit=new Function_Edit(this);
+     Funciton_File file=new Funciton_File(this);
+     Function_Format funtionFormat=new Function_Format(this);
+     Function_Color functionColor=new Function_Color(this);
+     Function_Edit functionEdit=new Function_Edit(this);
+     KeyHandler keyHandler=new KeyHandler(this);
      UndoManager um=new UndoManager();
         public NotePad(){
             createFrame();
@@ -63,6 +64,7 @@ public class NotePad implements ActionListener {
         }
         public void createTextArea(){
             textArea=new JTextArea();
+            textArea.addKeyListener(keyHandler);
             textArea.getDocument().addUndoableEditListener(
                     new UndoableEditListener() {
                         @Override
